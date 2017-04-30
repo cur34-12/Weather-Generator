@@ -4,7 +4,12 @@ import requests
 url = 'www.bom.gov.au/nsw/forecasts/sydneywaters.shtml'
 r  = requests.get("http://" +url)
 data = r.text
-soup = BeautifulSoup(data)
+soup = BeautifulSoup(data, 'html.parser')
 
-for link in soup.find_all('a'):
-    print(link.get('href'))
+daydivs = soup.findAll("div", { "class" : "day" })
+
+texttogenerate = daydivs[:2]
+
+soup.text
+
+print(texttogenerate)
